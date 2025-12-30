@@ -12,3 +12,5 @@ async function handleUserSignUp(req,res){
     })
     
 }
+
+module.exports = {handleUserSignUp}
