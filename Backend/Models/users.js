@@ -17,5 +17,5 @@ const userSchema = new mongoose.Schema({
 },{
     timestamps:true
 })
-const userModel = mongoose.Model('chatUser',userSchema)
+const userModel = mongoose.model('chatUser',userSchema)
 module.exports = userModel
