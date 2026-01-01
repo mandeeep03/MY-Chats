@@ -12,10 +12,7 @@ app.use(express.json())
 //let frontend use backend
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://my-chats-frontend.onrender.com", // frontend URL to be added later
-    ],
+    origin: ["http://localhost:5173", "https://my-chats-frontend.onrender.com"],
   })
 );
   
