@@ -2,7 +2,10 @@ const express =  require('express')
 const { handleUserSignUp } = require('../Controllers/users')
 const router = express.Router()
 
-router.post('/',handleUserSignUp)
+router
+    .route('/signup')
+    .post(handleUserSignUp)
+
 
 
 module.exports = router
