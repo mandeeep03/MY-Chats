@@ -10,8 +10,15 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
 //let frontend use backend
-app.use(cors())
-
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://my-chats-frontend.onrender.com", // frontend URL to be added later
+    ],
+  })
+);
+  
 
 //Connecting database 
 connectMongoDB(process.env.MONGODB_URI)
