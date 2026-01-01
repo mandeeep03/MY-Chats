@@ -11,12 +11,8 @@ app.use(express.urlencoded({extended:true}))
 
 //Connecting database 
 connectMongoDB(process.env.MONGODB_URI)
-    .then(()=>{
-    console.log("Databse Connected Succesfully")
-})
-    .catch((err)=>{
-    console.log("Error for database is " + err)
-})
+    .then(()=>{console.log("Databse Connected Succesfully")})
+    .catch((err)=>{console.log("Error for database is " + err)})
 
 app.use('/users',userRouter)
 
