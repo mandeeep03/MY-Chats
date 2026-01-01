@@ -7,6 +7,10 @@ const app = express()
 
 //Puts data in body 
 app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+
+//let frontend use backend
+app.use(cors())
 
 
 //Connecting database 
