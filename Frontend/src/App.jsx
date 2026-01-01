@@ -3,7 +3,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Home from "./Home";
 
-function App() {
+export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/signup" />} />
@@ -13,5 +13,3 @@ function App() {
     </Routes>
   );
 }
-
-export default App;
