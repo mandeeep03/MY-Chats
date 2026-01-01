@@ -1,10 +1,11 @@
 const express =  require('express')
-const { handleUserSignUp, handleUserFetch } = require("../Controllers/users");
+const { handleUserSignUp, handleUserFetch, handleUserLogin } = require("../Controllers/users");
 const router = express.Router()
 
-router
-    .route('/signup')
-    .post(handleUserSignUp)
+router.post('/signup',handleUserSignUp)
+router.post("/login", handleUserLogin);
+
+
 
 router.route("/").get(handleUserFetch);
 
