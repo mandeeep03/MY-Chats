@@ -2,7 +2,7 @@ const User = require('../Models/users')
 const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-function validateEmailAndPass(email,pass){
+function validateEmailAndPass(email,pass,req,res){
     if (!emailRegex.test(email)) {
         return res.status(400).json({ msg: "Email must be @gmail.com" });
     }
@@ -21,7 +21,7 @@ async function handleUserSignUp(req,res){
         return res.status(400).json({msg:"Bad request"})
     }
     //Validation of email & Password
-    validateEmailAndPass(email,password)
+    validateEmailAndPass(email,password,req,res)
 
     //creating user 
     await User.create({
@@ -37,7 +37,7 @@ async function handleUserLogin(req,res){
         return res.status(400).json({msg:"incomplete data"})
     }
     // Validation of email and pass
-    validateEmailAndPass(email, password);
+    validateEmailAndPass(email, password,req,res);
 
     const user = await User.findOne({email})
     if(!user){
