@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "https://my-chats-k92n.onrender.com";
+
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: `${BACKEND_URL}/api`,
   headers: { "Content-Type": "application/json" },
 });
 
