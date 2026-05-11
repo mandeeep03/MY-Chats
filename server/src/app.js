@@ -12,8 +12,6 @@ import { notFound, globalErrorHandler } from "./middleware/error.js";
 
 const app = express();
 
-app.use(helmet());
-
 const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173,https://my-chats-seven.vercel.app")
   .split(",")
   .map((o) => o.trim());
@@ -30,6 +28,12 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
   })
 );
 
