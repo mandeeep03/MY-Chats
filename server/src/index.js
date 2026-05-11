@@ -16,9 +16,12 @@ if (!MONGO_URI) {
 
 const httpServer = createServer(app);
 
-const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173,https://my-chats-seven.vercel.app")
-  .split(",")
-  .map((o) => o.trim());
+const allowedOrigins = [
+  ...new Set([
+    ...(process.env.CLIENT_URL || "http://localhost:5173").split(",").map((o) => o.trim()),
+    "https://my-chats-seven.vercel.app",
+  ]),
+];
 
 const io = new Server(httpServer, {
   cors: {

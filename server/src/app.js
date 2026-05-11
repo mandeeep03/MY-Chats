@@ -12,9 +12,12 @@ import { notFound, globalErrorHandler } from "./middleware/error.js";
 
 const app = express();
 
-const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173,https://my-chats-seven.vercel.app")
-  .split(",")
-  .map((o) => o.trim());
+const allowedOrigins = [
+  ...new Set([
+    ...(process.env.CLIENT_URL || "http://localhost:5173").split(",").map((o) => o.trim()),
+    "https://my-chats-seven.vercel.app",
+  ]),
+];
 
 app.use(
   cors({
